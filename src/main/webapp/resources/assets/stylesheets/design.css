@@ -1,0 +1,114 @@
+body {
+    background: url("../images/bg.gif") repeat-y scroll center top #434343;
+    color: #111111;
+    font: 11px/18px Lucida Grande, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+#container {
+    margin: 0 auto;
+    width: 750px;
+    height: auto;
+}
+
+#art {
+    background-image: url('../images/top.jpg');
+    width: 750px;
+    height: 167px;
+}
+
+#registration {
+    padding: 10px 10px 0 0;
+}
+
+#container .right {
+    float: right;
+}
+
+#menubar {
+    background: url("../images/nav_bg.gif") no-repeat scroll 0 0 transparent;
+    font-size: 11px;
+    height: 35px;
+    margin: 0;
+    padding: 0 30px;
+    width: 690px;
+}
+
+#menubar ul li {
+    display: inline;
+    padding: 10px;
+}
+
+#menubar ul li a {
+    border: 0 none;
+    color: #FFFFFF;
+    display: block;
+    float: left;
+    height: 27px;
+    margin: 0;
+    padding: 7px 18px 0;
+    text-align: center;
+    text-decoration: none;
+}
+
+#menubar ul li a:hover {
+    background: none repeat scroll 0 0 #111111;
+    color: #999999;
+}
+
+#menubar .on {
+    background: none repeat scroll 0 0 #111111;
+    color: #FF9900;
+    display: block;
+    float: left;
+    height: 27px;
+    margin: 0;
+    padding: 7px 18px 0;
+    text-align: center;
+}
+
+#content {
+    padding: 15px 35px 0 35px;
+    min-height: 500px;
+}
+
+#work_space {
+    margin:10px;
+}
+
+#source_code {
+    width: 340px;
+    height: 300px;
+}
+
+#output {
+    border: 2px black ridge;
+    width: 340px;
+    height: 450px;
+    overflow: auto;
+}
+
+#projects {
+    border-left: 3px gray dashed;
+    border-bottom: 3px gray dashed;
+    padding: 10px 10px 0 10px;
+    text-align: center;
+}
+
+.stubcontent {
+    padding: 15px 35px 0;
+    min-height: 500px;
+}
+
+#links {
+    height: 40px;
+    width: 750px;
+}
+.clear{
+    clear:both;
+}
+
+
+
+
