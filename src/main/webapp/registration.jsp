@@ -10,7 +10,6 @@
     <%@include file="/resources/assets/fragments/menubar.jspf" %>
 
     <section id="content">
-
         <form method="post" action="/registration">
             <table>
                 <tr>
@@ -24,7 +23,6 @@
                     <td>
                         <input type="text" name="password"/>
                     </td>
-
                 </tr>
                 <tr>
                     <td>
@@ -38,7 +36,6 @@
         </form>
     </section>
     <%@include file="/resources/assets/fragments/footer.jspf" %>
-
 </section>
 </body>
 </html>

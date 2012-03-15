@@ -2,6 +2,6 @@
     <ul>
         <li><a href="../index.jsp">Main</a></li>
         <li><a href="../profile.jsp">Profile</a></li>
-        <li><a href="menubar.jspf#">About</a></li>
+        <li><a href="#">About</a></li>
     </ul>
 </nav>

@@ -1,8 +1,6 @@
 package DAO;
 
 import Entity.User;
-
-import java.beans.Statement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -15,15 +13,15 @@ public class UserDao {
     Connection connection;
 
     public UserDao() {
-//        try {
-//            Class.forName("org.hsqldb.jdbc.JDBCDriver");
-//        } catch (ClassNotFoundException e) {
-//           System.err.print("Class not found");
-//        }
+        try {
+            Class.forName("org.hsqldb.jdbcDriver");
+        } catch (ClassNotFoundException e) {
+           System.err.print("Class not found");
+        }
     }
 
     public boolean addUser(User user) {
-        String sqlQueryString = "update users set name=?, password=?";
+        String sqlQueryString = "INSERT INTO USERS VALUES (?,?,?)";
 
         try {
             connection = DriverManager.getConnection("jdbc:hsqldb:mem:testdb", "SA", "");
@@ -35,8 +33,9 @@ public class UserDao {
             try {
                 statement = connection.prepareStatement(sqlQueryString);
 
-                statement.setString(1,user.getName());
-                statement.setString(2,user.getPassword());
+                statement.setInt(1, user.getID());
+                statement.setString(2,user.getName());
+                statement.setString(3,user.getPassword());
 
                 statement.executeUpdate();
             } finally {
@@ -46,13 +45,22 @@ public class UserDao {
             }
 
             connection.commit();
-
+            return true;
         } catch (Exception e) {
-//            try {
-//                connection.rollback();
-//            } catch (SQLException e1) {
+            try {
                 e.printStackTrace(System.out);
-//            }
+                connection.rollback();
+            } catch (SQLException e1) {
+                //ignore
+            }
+        } finally {
+            if(connection!=null){
+                try {
+                    connection.close();
+                } catch (SQLException e) {
+                    //ignore
+                }
+            }
         }
         return false;
     }

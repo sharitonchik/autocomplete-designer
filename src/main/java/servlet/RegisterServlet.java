@@ -18,9 +18,12 @@ public class RegisterServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String name = req.getParameter("name");
         String password = req.getParameter("password");
-        User user = new User(name,password);
+        User user = new User(1, name, password);
         UserDao userDao = new UserDao();
-        userDao.addUser(user);
-        req.getRequestDispatcher("/index.jspx").forward(req, resp);
+        if (userDao.addUser(user)) {
+            req.getRequestDispatcher("/index.jsp").forward(req, resp);
+        } else {
+            req.getRequestDispatcher("/errorRegistration.jsp").forward(req, resp);
+        }
     }
 }
