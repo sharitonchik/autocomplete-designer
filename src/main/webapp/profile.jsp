@@ -2,41 +2,13 @@
 <html>
 <head>
     <title>Main Page</title>
-    <link rel="stylesheet" type="text/css" href="resources/assets/stylesheets/design.css"/>
+    <%@include file="/resources/assets/fragments/stylesheet.jspf" %>
 </head>
 <body>
 <section id="container">
-    <header id="art">
-        <aside id="registration" class="right">
-            <form>
-                <table>
-                    <tr>
-                        <td><label for="name">Enter your name:</label>
-                        </td>
-                        <td><input type="text" id="name"/></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label for="password">Password</label></td>
-                        <td><input type="password" id="password"/></td>
-                    </tr>
-                    <tr>
-                        <td>&nbsp;</td>
-                        <td>
-                            <input type="submit" value="Enter"/>
-                        </td>
-                    </tr>
-                </table>
-            </form>
-        </aside>
-    </header>
-    <nav id="menubar">
-        <ul>
-            <li><a href="index.jsp">Main</a></li>
-            <li><a href="profile.jsp">Profile</a></li>
-            <li><a href="#">About</a></li>
-        </ul>
-    </nav>
+    <%@include file="/resources/assets/fragments/header.jspf" %>
+    <%@include file="/resources/assets/fragments/menubar.jspf" %>
+
     <aside id="projects" class="right">
         <ul>
             <li><a href="new_project.jsp">New project</a></li>
@@ -62,11 +34,8 @@
         even better when you know what you're doing. Programming is difficult business. It should never be undertaken in
         ignorance.
     </section>
-    <footer id="links" class="clear">
-        <a href="http://javascript.ru" target="blank">
-            <img src="resources/assets/images/linkjs.gif" alt="Javascript.RU"/>
-        </a>
-    </footer>
+    <%@include file="/resources/assets/fragments/footer.jspf" %>
+
 </section>
 </body>
 </html>
