@@ -1,4 +1,4 @@
-package servlet;
+package by.mgvrk.servlet;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;

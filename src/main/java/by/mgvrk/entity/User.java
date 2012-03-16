@@ -1,4 +1,4 @@
-package entity;
+package by.mgvrk.entity;
 
 /**
  * User: sharitonchik
@@ -10,6 +10,7 @@ public class User {
     private String email;
     private String phone;
     private String country;
+    private String role;
 
     public User(int ID, String name, String password) {
         this.ID = ID;
