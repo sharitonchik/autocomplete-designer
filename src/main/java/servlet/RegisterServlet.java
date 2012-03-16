@@ -1,7 +1,7 @@
 package servlet;
 
-import DAO.UserDao;
-import Entity.User;
+import dao.UserDao;
+import entity.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -21,9 +21,9 @@ public class RegisterServlet extends HttpServlet {
         User user = new User(1, name, password);
         UserDao userDao = new UserDao();
         if (userDao.addUser(user)) {
-            req.getRequestDispatcher("/index.jsp").forward(req, resp);
+            req.getRequestDispatcher("/index.jspx").forward(req, resp);
         } else {
-            req.getRequestDispatcher("/errorRegistration.jsp").forward(req, resp);
+            req.getRequestDispatcher("/registration_fail.jspx").forward(req, resp);
         }
     }
 }
