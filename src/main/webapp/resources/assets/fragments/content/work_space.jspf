@@ -1,0 +1,7 @@
+<section id="work_space">
+    <section id="output" class="right"></section>
+    <textarea id="source_code"></textarea><br/>
+    <input id="beauty" type="button" value="Beautify code"/>
+    <input id="see" type="button" value="See"/>
+    <%--<textarea id="css_code"></textarea>--%>
+</section>
