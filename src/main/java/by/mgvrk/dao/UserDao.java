@@ -10,20 +10,22 @@ import java.sql.SQLException;
  * UserDao: sharitonchik
  */
 public class UserDao extends ExceptionHandlerTemplateDao {
+    User user;
 
-    public UserDao() {}
+    public UserDao() {
+    }
 
     public boolean addUser(User user) {
         String sqlQueryString = "INSERT INTO USERS VALUES (?,?,?)";
-
-        return process(sqlQueryString, user);
+        this.user = user;
+        return process(sqlQueryString);
     }
 
     @Override
-    public void executeQueryString(PreparedStatement statement, User user) throws SQLException {
-        statement.setInt(1, user.getID());
-        statement.setString(2, user.getName());
-        statement.setString(3, user.getPassword());
+    public void executeQueryString(PreparedStatement statement) throws SQLException {
+        statement.setInt(1, this.user.getID());
+        statement.setString(2, this.user.getName());
+        statement.setString(3, this.user.getPassword());
 
         statement.executeUpdate();
     }
