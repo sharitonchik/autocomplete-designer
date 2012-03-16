@@ -31,10 +31,6 @@ public abstract class ExceptionHandlerTemplateDao {
     }
 
     public boolean process(String sqlQueryString) {
-        return process(sqlQueryString, null);
-    }
-
-    public boolean process(String sqlQueryString, User user) {
         connection = createConnection();
         if (connection != null) {
             try {
@@ -44,7 +40,7 @@ public abstract class ExceptionHandlerTemplateDao {
                 PreparedStatement statement = null;
                 try {
                     statement = connection.prepareStatement(sqlQueryString);
-                    executeQueryString(statement, user);
+                    executeQueryString(statement);
                 } finally {
                     if (statement != null) {
                         statement.close();
@@ -80,5 +76,5 @@ public abstract class ExceptionHandlerTemplateDao {
         }
     }
 
-    public abstract void executeQueryString(PreparedStatement statement, User user) throws SQLException;
+    public abstract void executeQueryString(PreparedStatement statement) throws SQLException;
 }
