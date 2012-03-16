@@ -1,6 +1,6 @@
-package DAO;
+package dao;
 
-import Entity.User;
+import entity.User;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -24,13 +24,14 @@ public class UserDao {
         String sqlQueryString = "INSERT INTO USERS VALUES (?,?,?)";
 
         try {
-            connection = DriverManager.getConnection("jdbc:hsqldb:mem:testdb", "SA", "");
+            connection = DriverManager.getConnection("jdbc:hsqldb:mem:data", "SA", "");
 
 
             connection.setAutoCommit(false);
 
             PreparedStatement statement = null;
             try {
+                connection.createStatement().executeQuery("CREATE TABLE users (ID int, name varchar(20), password varchar(20));");
                 statement = connection.prepareStatement(sqlQueryString);
 
                 statement.setInt(1, user.getID());
