@@ -1,6 +1,7 @@
 package by.mgvrk.servlet;
 
 import by.mgvrk.dao.UserDao;
+import by.mgvrk.dao.builder.BuilderDao;
 import by.mgvrk.entity.User;
 import by.mgvrk.util.ServerHandling;
 
@@ -26,9 +27,10 @@ public class RegisterServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String name = req.getParameter("name");
         String password = req.getParameter("password");
-        User user = new User(1, name, password);
-        UserDao userDao = new UserDao();
-        if (userDao.addUser(user)) {
+
+        BuilderDao builderDao = new BuilderDao();
+
+        if (builderDao.registerUser(name, password)) {
             req.getRequestDispatcher("/good.jspx").forward(req, resp);
         } else {
             req.getRequestDispatcher("/registration_fail.jspx").forward(req, resp);
