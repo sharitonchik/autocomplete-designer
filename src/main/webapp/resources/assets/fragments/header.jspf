@@ -16,7 +16,7 @@
                     <td>
                         <input type="submit" value="Enter"/>
                     </td>
-                    <td><a href="../registration.jsp">Registration</a></td>
+                    <td><a href="../registration.jspx">Registration</a></td>
                 </tr>
             </table>
         </form>

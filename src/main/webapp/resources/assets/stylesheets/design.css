@@ -84,7 +84,7 @@ body {
 
 #output {
     border: 2px black ridge;
-    width: 340px;
+    width: 310px;
     height: 450px;
     overflow: auto;
 }
@@ -109,6 +109,10 @@ body {
     clear:both;
 }
 
+#content .error{
+    color: red;
+    font-size: 2em;
+}
 
 
 

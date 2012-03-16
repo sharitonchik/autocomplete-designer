@@ -1,7 +1,7 @@
 <nav id="menubar">
     <ul>
-        <li><a href="../index.jsp">Main</a></li>
-        <li><a href="../profile.jsp">Profile</a></li>
+        <li><a href="../index.jspx">Main</a></li>
+        <li><a href="../profile.jspx">Profile</a></li>
         <li><a href="#">About</a></li>
     </ul>
 </nav>

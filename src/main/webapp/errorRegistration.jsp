@@ -12,10 +12,9 @@
     <%@include file="/resources/assets/fragments/header.jspf" %>
     <%@include file="/resources/assets/fragments/menubar.jspf" %>
 
+
     <section id="content">
-        <p>
-            Sorry, but registration undone! Try in other time!
-        </p>
+        <%@include file="/resources/assets/fragments/content/error.jspf" %>
     </section>
     <%@include file="/resources/assets/fragments/footer.jspf" %>
 </section>
