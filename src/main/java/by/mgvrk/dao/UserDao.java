@@ -1,31 +1,27 @@
 package by.mgvrk.dao;
 
 import by.mgvrk.entity.User;
-import by.mgvrk.util.ExceptionHandlerTemplateDao;
-
+import by.mgvrk.service.DBConnection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 /**
  * UserDao: sharitonchik
  */
-public class UserDao extends ExceptionHandlerTemplateDao {
-    User user;
+public class UserDao {
+    DBConnection dbConnection;
 
     public UserDao() {
+        dbConnection = DBConnection.getInstance();
     }
 
-    public boolean addUser(User user) {
+    public void setUser(User user) throws SQLException {
         String sqlQueryString = "INSERT INTO USERS VALUES (?,?,?)";
-        this.user = user;
-        return process(sqlQueryString);
-    }
+        PreparedStatement statement = dbConnection.getPreparedStatement(sqlQueryString);
 
-    @Override
-    public void executeQueryString(PreparedStatement statement) throws SQLException {
-        statement.setInt(1, this.user.getID());
-        statement.setString(2, this.user.getName());
-        statement.setString(3, this.user.getPassword());
+        statement.setInt(1, user.getID());
+        statement.setString(2, user.getName());
+        statement.setString(3, user.getPassword());
 
         statement.executeUpdate();
     }
