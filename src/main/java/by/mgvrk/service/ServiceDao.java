@@ -36,7 +36,7 @@ public class ServiceDao {
         user.setPassword(req.getParameter("password"));
         user.setCountry(req.getParameter("country"));
         user.setPhone(req.getParameter("phone"));
-        user.setEmail("email");
+        user.setEmail(req.getParameter("email"));
         user.setRole("user");
 
         return addUser(user);
@@ -53,6 +53,26 @@ public class ServiceDao {
             return true;
         } catch (SQLException e) {
             dbConnection.rollBackTransaction();
+            e.printStackTrace(System.out);
+
+            return false;
+        }
+    }
+
+    public boolean isRegistered(HttpServletRequest req) {
+        dbConnection.startTransaction();
+        try {
+            if (userDao.checkUser(req.getParameter("login"),
+                    req.getParameter("password"))) {
+                dbConnection.commitTransaction();
+
+                return true;
+            } else {
+                dbConnection.rollBackTransaction();
+
+                return false;
+            }
+        } catch (SQLException e) {
             e.printStackTrace(System.out);
 
             return false;
