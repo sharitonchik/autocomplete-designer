@@ -7,10 +7,10 @@ import java.io.PrintWriter;
 /**
  * User: sharitonchik
  */
-public class ServerHandling {
+public class HsqlServer {
     Server server;
 
-    public ServerHandling() {
+    public HsqlServer() {
         server = new Server();
         server.setAddress("localhost");
         server.setDatabaseName(0,"testdb");
