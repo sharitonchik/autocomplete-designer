@@ -49,6 +49,7 @@ public class ServiceDao {
             userDao.setUser(user);
             roleDao.setRole(user);
             dataUserDao.setDataUser(user);
+
             dbConnection.commitTransaction();
 
             return true;
@@ -80,4 +81,18 @@ public class ServiceDao {
         }
     }
 
+    public boolean addProject(HttpServletRequest req) {
+        dbConnection.startTransaction();
+        try {
+            projectsDao.setProject(req.getParameter("project_name"));
+            dbConnection.commitTransaction();
+
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace(System.out);
+            dbConnection.rollBackTransaction();
+
+            return false;
+        }
+    }
 }

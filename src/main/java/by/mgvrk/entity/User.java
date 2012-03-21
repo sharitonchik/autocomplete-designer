@@ -1,9 +1,12 @@
 package by.mgvrk.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * User: sharitonchik
  */
-public class User {
+public class User {       //need the user class??
     private int ID;
     private String name;
     private String password;
@@ -12,6 +15,7 @@ public class User {
     private String country;
     private String gender;
     private String role;
+    private String project;
 
     public User() {
     }
@@ -78,6 +82,14 @@ public class User {
 
     public void setGender(String gender) {
         this.gender = gender;
+    }
+
+    public void setProject(String project_name) {
+        this.project = project_name;
+    }
+
+    public String getProject() {
+        return project;
     }
 }
 

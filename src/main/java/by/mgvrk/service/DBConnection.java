@@ -108,7 +108,7 @@ public class DBConnection {
         try {
             connection
                     .createStatement()
-                    .executeQuery("CREATE TABLE PROJECTS (ID int, name_project varchar(20));");
+                    .executeQuery("CREATE TABLE PROJECTS (ID int, ID_users int, name_project varchar(20));");
         } catch (SQLException e) {
             e.printStackTrace(System.out);
         }
