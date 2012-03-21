@@ -37,6 +37,7 @@ public class ServiceDao {
         user.setCountry(req.getParameter("country"));
         user.setPhone(req.getParameter("phone"));
         user.setEmail(req.getParameter("email"));
+        user.setGender(req.getParameter("gender"));
         user.setRole("user");
 
         return addUser(user);

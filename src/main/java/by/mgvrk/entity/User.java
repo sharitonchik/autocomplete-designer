@@ -10,6 +10,7 @@ public class User {
     private String email;
     private String phone;
     private String country;
+    private String gender;
     private String role;
 
     public User() {
@@ -70,5 +71,14 @@ public class User {
     public void setRole(String role) {
         this.role = role;
     }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
 }
+
 

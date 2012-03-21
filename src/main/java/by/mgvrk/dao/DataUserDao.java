@@ -17,13 +17,14 @@ public class DataUserDao {
     }
 
     public void setDataUser(User user) throws SQLException {
-        String sqlQueryString = "INSERT INTO DATA_USER VALUES (?,?,?,?)";
+        String sqlQueryString = "INSERT INTO DATA_USER VALUES (?,?,?,?,?)";
         PreparedStatement statement = dbConnection.getPreparedStatement(sqlQueryString);
 
         statement.setInt(1, user.getID());
         statement.setString(2, user.getCountry());
         statement.setString(3, user.getPhone());
         statement.setString(4, user.getEmail());
+        statement.setString(5, user.getGender());
 
         statement.executeUpdate();
     }

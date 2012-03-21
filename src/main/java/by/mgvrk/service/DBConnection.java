@@ -88,7 +88,7 @@ public class DBConnection {
             connection
                     .createStatement()
                     .executeQuery("CREATE TABLE DATA_USER (ID int, country varchar(20)," +
-                            " phone varchar(20),email varchar(20));");
+                            " phone varchar(20),email varchar(20), gender varchar(20));");
         } catch (SQLException e) {
             e.printStackTrace(System.out);
         }
