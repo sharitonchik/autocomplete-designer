@@ -44,32 +44,35 @@ public class UserService {
     }
 
     private boolean doCommand(String command, User user) {
+        boolean result = false;
+
         dbConnection.startTransaction();
         try {
             if (command.equals("register")) {
                 userDao.setUser(user);
                 dataUserDao.setDataUser(user);
+                result = true;
             }
 
             if (command.equals("check")) {
-                userDao.checkUser(user.getName(), user.getPassword());
+                result = userDao.checkUser(user.getName(), user.getPassword());
             }
 
             if (command.equals("access")) {
                 roleDao.getRole(user);
+                result = true;
             }
 
             if (command.equals("addProject")) {
-                projectsDao.setProject(user.getProject());
+                result = projectsDao.setProject(user.getProject());
             }
 
             dbConnection.commitTransaction();
-            return true;
         } catch (SQLException e) {
             e.printStackTrace(System.out);
             dbConnection.rollBackTransaction();
-
-            return false;
+            result = false;
         }
+        return result;
     }
 }

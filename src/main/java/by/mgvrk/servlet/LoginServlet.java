@@ -24,7 +24,7 @@ public class LoginServlet extends HttpServlet {
         if (serviceDao.isRegistered(user)) {
             System.out.println("registered");
         } else {
-            resp.sendRedirect("index.jsp");
+            resp.sendRedirect("index.jspx");
         }
     }
 }

@@ -30,7 +30,6 @@ public class RegisterServlet extends HttpServlet {
         user.setPhone(req.getParameter("phone"));
         user.setEmail(req.getParameter("email"));
         user.setGender(req.getParameter("gender"));
-        user.setRole("user");
 
         if (serviceDao.registerUser(user)) {
             resp.sendRedirect("good.jspx");
