@@ -5,7 +5,7 @@
 <web-app>
     <display-name>Archetype Created Web Application</display-name>
     <listener>
-        <listener-class>by.mgvrk.service.ApplicationListener</listener-class>
+        <listener-class>by.mgvrk.servlet.ApplicationListener</listener-class>
     </listener>
     <servlet>
         <servlet-name>registration</servlet-name>
