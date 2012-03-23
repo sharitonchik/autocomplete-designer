@@ -47,6 +47,10 @@ public class BaseInitialisation extends Dao {
                     "name_project varchar(20)," +
                     "PRIMARY KEY (ID));");
 
+             createTable("HIB", "CREATE TABLE HIB (" +
+                    "ID INT NOT NULL AUTO_INCREMENT, " +
+                    "text varchar(20)," +
+                    "PRIMARY KEY (ID));");
             dbConnection.commitTransaction();
         } catch (SQLException e) {
             e.printStackTrace(System.out);
