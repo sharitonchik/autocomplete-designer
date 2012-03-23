@@ -1,18 +1,15 @@
 package by.mgvrk.dao;
 
-import by.mgvrk.service.DBConnection;
-
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 /**
  * User: sharitonchik
  */
-public class ProjectsDao {
-    DBConnection dbConnection;
+public class ProjectsDao extends Dao {
 
-    public ProjectsDao() {
-        dbConnection = DBConnection.getInstance();
+    public ProjectsDao(DBConnection dbConnection) {
+        super(dbConnection);
     }
 
     public boolean setProject(String project_name) throws SQLException {

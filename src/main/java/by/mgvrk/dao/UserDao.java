@@ -1,8 +1,9 @@
 package by.mgvrk.dao;
 
 import by.mgvrk.entity.User;
-import by.mgvrk.service.DBConnection;
+import com.mysql.jdbc.Statement;
 
+import javax.xml.transform.Result;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.ResultSet;
@@ -10,20 +11,20 @@ import java.sql.ResultSet;
 /**
  * UserDao: sharitonchik
  */
-public class UserDao {
-    DBConnection dbConnection;
+public class UserDao extends Dao {
 
-    public UserDao() {
-        dbConnection = DBConnection.getInstance();
+    public UserDao(DBConnection dbConnection) {
+        super(dbConnection);
     }
 
     public void setUser(User user) throws SQLException {
-        String sqlQueryString = "INSERT INTO USERS VALUES (?,?,?)";
+        String sqlQueryString = "INSERT INTO USERS (login, password, role) VALUES (?,?,?)";
         PreparedStatement statement = dbConnection.getPreparedStatement(sqlQueryString);
 
-        statement.setInt(1, user.getID());
-        statement.setString(2, user.getName());
-        statement.setString(3, user.getPassword());
+        statement.setString(1, user.getName());
+        statement.setString(2, user.getPassword());
+        statement.setInt(3, 2);
+
 
         statement.executeUpdate();
     }

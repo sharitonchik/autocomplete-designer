@@ -1,26 +1,27 @@
 package by.mgvrk.dao;
 
 import by.mgvrk.entity.User;
-import by.mgvrk.service.DBConnection;
+
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 /**
  * User: sharitonchik
  */
-public class RoleDao {
-    DBConnection dbConnection;
+public class RoleDao extends Dao {
 
-    public RoleDao() {
-        dbConnection = DBConnection.getInstance();
+    public RoleDao(DBConnection dbConnection) {
+        super(dbConnection);
     }
 
-    public void setRole(User user) throws SQLException {
-        String sqlQueryString = "INSERT INTO ROLES VALUES (?,?)";
+    public void getRole(User user) throws SQLException {
+        String sqlQueryString = "SELECT ROLES.ROLE " +
+                "FROM USERS, ROLES " +
+                "WHERE USERS.NAME=? and USERS.PASSWORD=? and USERS.ROLE=ROLES.ROLE";
         PreparedStatement statement = dbConnection.getPreparedStatement(sqlQueryString);
 
-        statement.setInt(1, user.getID());
-        statement.setString(2, user.getRole());
+        statement.setString(1, user.getName());
+        statement.setString(2, user.getPassword());
 
         statement.executeUpdate();
     }
