@@ -1,6 +1,7 @@
-package by.mgvrk.service;
+package by.mgvrk.servlet;
 
-import by.mgvrk.util.HsqlServer;
+import by.mgvrk.dao.BaseInitialisation;
+import by.mgvrk.dao.DBConnection;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
@@ -9,19 +10,15 @@ import javax.servlet.ServletContextListener;
  * User: sharitonchik
  */
 public class ApplicationListener implements ServletContextListener {
-    HsqlServer server;
     DBConnection dbConnection;
 
     public void contextInitialized(ServletContextEvent sce) {
-        server = new HsqlServer();
-        server.startServer();
-
         dbConnection = DBConnection.getInstance();
-        dbConnection.createTables();
+        BaseInitialisation baseInitialisation = new BaseInitialisation(dbConnection);
+        baseInitialisation.createTables();
     }
 
     public void contextDestroyed(ServletContextEvent sce) {
         dbConnection.closeConnection();
-        server.stopServer();
     }
 }
