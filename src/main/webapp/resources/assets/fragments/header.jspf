@@ -13,9 +13,10 @@
                     <td><input type="password" id="password"/></td>
                 </tr>
                 <tr>
-                    <td><a href="../registration.jspx">Registration</a></td>
+                    <td>&nbsp;</td>
                     <td>
-                        <input type="submit" value="Enter"/>
+                        <input type="submit" value="Enter"/>&nbsp;&nbsp;
+                        <a href="../registration.jspx">Registration</a>
                     </td>
                 </tr>
             </table>
