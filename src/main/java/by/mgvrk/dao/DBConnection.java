@@ -16,10 +16,8 @@ public class DBConnection {
 
     private DBConnection() {
         try {
-//            Class.forName("org.hsqldb.jdbcDriver");
             Class.forName("org.gjt.mm.mysql.Driver");
 
-//            connection = DriverManager.getConnection("jdbc:hsqldb:hsql://localhost:1234/testdb", "SA", "");
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/test", "root", "root");
 
         } catch (ClassNotFoundException e) {
