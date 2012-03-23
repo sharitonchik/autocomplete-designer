@@ -1,6 +1,7 @@
 package by.mgvrk.servlet;
 
-import by.mgvrk.service.ServiceDao;
+import by.mgvrk.entity.User;
+import by.mgvrk.service.UserService;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -14,12 +15,16 @@ import java.io.IOException;
 public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        ServiceDao serviceDao = new ServiceDao();
+        UserService serviceDao = new UserService();
 
-        if (serviceDao.isRegistered(req)) {
+        User user = new User();
+        user.setName(req.getParameter("login"));
+        user.setPassword(req.getParameter("password"));
+
+        if (serviceDao.isRegistered(user)) {
             System.out.println("registered");
         } else {
-            req.getRequestDispatcher("/index.jspx").forward(req, resp);
+            resp.sendRedirect("index.jsp");
         }
     }
 }

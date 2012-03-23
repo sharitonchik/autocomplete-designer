@@ -1,7 +1,7 @@
 package by.mgvrk.servlet;
 
-import by.mgvrk.service.ServiceDao;
-import by.mgvrk.util.HsqlServer;
+import by.mgvrk.entity.User;
+import by.mgvrk.service.UserService;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -15,14 +15,29 @@ import java.io.IOException;
 public class RegisterServlet extends HttpServlet {
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        ServiceDao serviceDao = new ServiceDao();
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        super.doGet(req, resp);
+    }
 
-        if (serviceDao.registerUser(req)) {
-            req.getRequestDispatcher("/good.jspx").forward(req, resp);
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        UserService serviceDao = new UserService();
+
+        User user = new User();
+        user.setName(req.getParameter("login"));
+        user.setPassword(req.getParameter("password"));
+        user.setCountry(req.getParameter("country"));
+        user.setPhone(req.getParameter("phone"));
+        user.setEmail(req.getParameter("email"));
+        user.setGender(req.getParameter("gender"));
+        user.setRole("user");
+
+        if (serviceDao.registerUser(user)) {
+            resp.sendRedirect("good.jspx");
         } else {
-            req.getRequestDispatcher("/registration_fail.jspx").forward(req, resp);
+            resp.sendRedirect("registration_fail.jspx");
         }
+
     }
 
 }
