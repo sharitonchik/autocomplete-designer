@@ -1,12 +1,23 @@
 package by.mgvrk.entity.user;
 
+import javax.persistence.*;
+
 /**
  * User: sharitonchik
  */
+@Entity
+@Table(name = "PROJECTS")
 public class Project {
+    @Id
+    @Column(name = "ID")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long ID;
+
+    @Column(name="ID_users")
     private Long ID_users;
-    private String project_name;
+
+    @Column(name="name_project")
+    private String projectName;
 
     public Project() {
     }
@@ -27,11 +38,11 @@ public class Project {
         this.ID_users = ID_users;
     }
 
-    public String getProject_name() {
-        return project_name;
+    public String getProjectName() {
+        return projectName;
     }
 
-    public void setProject_name(String project_name) {
-        this.project_name = project_name;
+    public void setProjectName(String projectName) {
+        this.projectName = projectName;
     }
 }

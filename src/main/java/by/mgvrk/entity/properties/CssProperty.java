@@ -1,14 +1,25 @@
 package by.mgvrk.entity.properties;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * User: sharitonchik
  */
+@Entity
+@Table(name = "PROPERTIES")
 public class CssProperty {
+    @Id
+    @Column(name = "ID")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long ID;
+
+    @Column(name = "property")
     private String propertyName;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "ID_property")
     private List propertyValues = new ArrayList<CssPropertyValue>();
 
     public CssProperty() {

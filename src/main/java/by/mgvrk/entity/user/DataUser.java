@@ -2,16 +2,30 @@ package by.mgvrk.entity.user;
 
 import by.mgvrk.entity.user.User;
 
+import javax.persistence.*;
+
 /**
  * User: sharitonchik
  */
+@Entity
+@Table(name="DATA_USER")
 public class DataUser {
+    @Id
+    @Column(name="ID")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long ID;
+
+    @Column(name="country")
     private String country;
+
+    @Column(name="phone")
     private String phone;
+
+    @Column(name="email")
     private String email;
+
+    @Column(name="gender")
     private String gender;
-    private User user;
 
     public DataUser() {
     }
@@ -54,13 +68,5 @@ public class DataUser {
 
     public void setGender(String gender) {
         this.gender = gender;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
     }
 }

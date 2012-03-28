@@ -1,10 +1,19 @@
 package by.mgvrk.entity.user;
 
+import javax.persistence.*;
+
 /**
  * User: sharitonchik
  */
+@Entity
+@Table(name = "ROLES")
 public class Role {
+    @Id
+    @Column(name = "ID")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long ID;
+
+    @Column(name = "role")
     private String role;
 
     public Role() {
@@ -14,7 +23,7 @@ public class Role {
         return ID;
     }
 
-    public void setID(Long ID) {
+    private void setID(Long ID) {
         this.ID = ID;
     }
 

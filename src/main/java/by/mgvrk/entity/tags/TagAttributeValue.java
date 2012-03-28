@@ -1,11 +1,22 @@
 package by.mgvrk.entity.tags;
 
+import javax.persistence.*;
+
 /**
  * User: sharitonchik
  */
+@Entity
+@Table(name = "ATTRIBUTE_VALUE")
 public class TagAttributeValue {
+    @Id
+    @Column(name = "ID")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long ID;
+
+    @Column(name = "ID_attribute")
     private Long ID_attribute;
+
+    @Column(name = "attribute_value")
     private String attributeValue;
 
     public TagAttributeValue() {

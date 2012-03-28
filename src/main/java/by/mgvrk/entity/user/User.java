@@ -1,18 +1,36 @@
 package by.mgvrk.entity.user;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * User: sharitonchik
  */
+@Entity
+@Table(name = "USERS")
 public class User {
+    @Id
+    @Column(name = "ID")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long ID;
+
+    @Column(name = "login")
     private String login;
+
+    @Column(name = "password")
     private String password;
-    private Role role;
+
+    @Column(name = "role")
+    private Long role;
+
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "ID")
     private DataUser dataUsers;
-    private List projects = new ArrayList<Project>();
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "ID_users")
+    private List<Project> projects = new ArrayList<Project>();
 
     public User() {
     }
@@ -21,7 +39,7 @@ public class User {
         return ID;
     }
 
-    public void setID(Long ID) {
+    private void setID(Long ID) {
         this.ID = ID;
     }
 
@@ -41,11 +59,11 @@ public class User {
         this.password = password;
     }
 
-    public Role getRole() {
+    public Long getRole() {
         return role;
     }
 
-    public void setRole(Role role) {
+    public void setRole(Long role) {
         this.role = role;
     }
 

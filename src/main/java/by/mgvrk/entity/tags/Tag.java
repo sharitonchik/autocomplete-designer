@@ -1,14 +1,25 @@
 package by.mgvrk.entity.tags;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * User: sharitonchik
  */
+@Entity
+@Table(name = "TAGS")
 public class Tag {
+    @Id
+    @Column(name = "ID")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long ID;
+
+    @Column(name = "tag_name")
     private String tagName;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "ID_tag")
     private List attributes = new ArrayList<TagAttribute>();
 
     public Tag() {
