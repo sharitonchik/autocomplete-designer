@@ -20,7 +20,7 @@ public class Tag {
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "ID_tag")
-    private List attributes = new ArrayList<TagAttribute>();
+    private List<TagAttribute> attributes = new ArrayList<TagAttribute>();
 
     public Tag() {
     }

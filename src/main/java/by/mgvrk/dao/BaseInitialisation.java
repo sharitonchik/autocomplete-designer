@@ -1,6 +1,9 @@
 package by.mgvrk.dao;
 
+import by.mgvrk.entity.user.User;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
+
 import java.sql.SQLException;
 
 /**
@@ -34,20 +37,21 @@ public class BaseInitialisation extends Dao {
                     "ID INT NOT NULL AUTO_INCREMENT, " +
                     "role varchar(20)," +
                     "PRIMARY KEY (ID));");
-
+            session.createSQLQuery("INSERT INTO ROLES (role) VALUES ('admin');").executeUpdate();
+            session.createSQLQuery("INSERT INTO ROLES (role) VALUES ('user');").executeUpdate();
             createTable("CREATE TABLE PROJECTS (" +
                     "ID INT NOT NULL AUTO_INCREMENT, " +
                     "ID_users int," +
                     "name_project varchar(20)," +
                     "PRIMARY KEY (ID));");
             session.getTransaction().commit();
-        } catch (SQLException e) {
+        } catch (HibernateException e) {
             e.printStackTrace(System.out);
             session.getTransaction().rollback();
         }
     }
 
-    private void createTable(String sqlQuery) throws SQLException {
+    private void createTable(String sqlQuery) {
         session.createSQLQuery(sqlQuery);
     }
 

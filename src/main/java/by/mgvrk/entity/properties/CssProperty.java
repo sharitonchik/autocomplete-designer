@@ -20,7 +20,7 @@ public class CssProperty {
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "ID_property")
-    private List propertyValues = new ArrayList<CssPropertyValue>();
+    private List<CssPropertyValue> propertyValues = new ArrayList<CssPropertyValue>();
 
     public CssProperty() {
     }

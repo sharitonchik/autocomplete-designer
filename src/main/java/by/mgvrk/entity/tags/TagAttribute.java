@@ -23,7 +23,7 @@ public class TagAttribute {
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "ID_attribute")
-    private List attributeValues = new ArrayList<TagAttributeValue>();
+    private List<TagAttributeValue> attributeValues = new ArrayList<TagAttributeValue>();
 
     public TagAttribute() {
     }

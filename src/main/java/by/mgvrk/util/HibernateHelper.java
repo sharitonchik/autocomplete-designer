@@ -1,6 +1,7 @@
 package by.mgvrk.util;
 
 import org.hibernate.HibernateException;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
@@ -8,20 +9,19 @@ import org.hibernate.cfg.Configuration;
  * User: sharitonchik
  */
 public class HibernateHelper {
-    private static final SessionFactory instance;
+    private static final SessionFactory sessionFactory = buildSessionFactory();
 
-    static {
+    private static SessionFactory buildSessionFactory() {
         try {
-            instance = new Configuration()
-                    .configure().buildSessionFactory();
-        } catch (Throwable e) {
-            throw new ExceptionInInitializerError(e);
-
+            return new Configuration().configure().buildSessionFactory();
+        } catch (Throwable ex) {
+            System.err.println("Initial SessionFactory creation failed." + ex);
+            throw new ExceptionInInitializerError(ex);
         }
     }
 
-    public static SessionFactory getSessionFactory() throws HibernateException {
-        return instance;
+    public static SessionFactory getSessionFactory() {
+        return sessionFactory;
     }
 }
 
