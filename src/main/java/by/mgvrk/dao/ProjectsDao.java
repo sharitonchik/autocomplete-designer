@@ -1,6 +1,9 @@
 package by.mgvrk.dao;
 
-import java.sql.PreparedStatement;
+import by.mgvrk.entity.user.Project;
+import by.mgvrk.entity.user.User;
+import org.hibernate.Session;
+
 import java.sql.SQLException;
 
 /**
@@ -8,19 +11,14 @@ import java.sql.SQLException;
  */
 public class ProjectsDao extends Dao {
 
-    public ProjectsDao(DBConnection dbConnection) {
-        super(dbConnection);
+    public ProjectsDao(Session session) {
+        super(session);
     }
 
-    public boolean setProject(String project_name) throws SQLException {
-        String sqlQueryString = "INSERT INTO PROJECTS VALUES(?,?,?)";
-        PreparedStatement statement = dbConnection.getPreparedStatement(sqlQueryString);
-
-        statement.setInt(1, 1);
-        statement.setInt(2, 1);
-        statement.setString(3, project_name);
-
-        statement.executeUpdate();
-        return false;
+    public void setProject(String projectName, User user) throws SQLException {
+        Project project = new Project();
+        project.setProjectName(projectName);
+        user.getProjects().add(project);
+        session.save(user);
     }
 }

@@ -1,12 +1,14 @@
 package by.mgvrk.dao;
 
+import org.hibernate.Session;
+
 /**
  * User: sharitonchik
  */
 public abstract class Dao {
-    protected DBConnection dbConnection;
+    protected Session session;
 
-    protected Dao(DBConnection dbConnection) {
-        this.dbConnection = dbConnection;
+    protected Dao(Session session) {
+        this.session = session;
     }
 }

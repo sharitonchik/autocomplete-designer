@@ -1,29 +1,29 @@
 package by.mgvrk.service;
 
 import by.mgvrk.dao.*;
-import by.mgvrk.entity.User;
-import com.mysql.jdbc.Statement;
+import by.mgvrk.entity.user.User;
+import by.mgvrk.util.HibernateHelper;
+import org.hibernate.Session;
 
-import javax.servlet.http.HttpServletRequest;
 import java.sql.SQLException;
 
 /**
  * User: sharitonchik
  */
 public class UserService {
-    private DBConnection dbConnection;
+    private Session session;
     private UserDao userDao;
     private DataUserDao dataUserDao;
     private RoleDao roleDao;
     private ProjectsDao projectsDao;
 
     public UserService() {
-        dbConnection = DBConnection.getInstance();
+        session = HibernateHelper.getSessionFactory().getCurrentSession();
 
-        userDao = new UserDao(dbConnection);
-        dataUserDao = new DataUserDao(dbConnection);
-        roleDao = new RoleDao(dbConnection);
-        projectsDao = new ProjectsDao(dbConnection);
+        userDao = new UserDao(session);
+        dataUserDao = new DataUserDao(session);
+        roleDao = new RoleDao(session);
+        projectsDao = new ProjectsDao(session);
     }
 
     public boolean registerUser(User user) {
@@ -46,16 +46,16 @@ public class UserService {
     private boolean doCommand(String command, User user) {
         boolean result = false;
 
-        dbConnection.startTransaction();
+        session.beginTransaction();
         try {
             if (command.equals("register")) {
+                user.setRole(roleDao.getUserRole().getID());
                 userDao.setUser(user);
-                dataUserDao.setDataUser(user);
                 result = true;
             }
 
             if (command.equals("check")) {
-                result = userDao.checkUser(user.getName(), user.getPassword());
+                result = userDao.checkUser(user.getLogin(), user.getPassword());
             }
 
             if (command.equals("access")) {
@@ -64,13 +64,13 @@ public class UserService {
             }
 
             if (command.equals("addProject")) {
-                result = projectsDao.setProject(user.getProject());
+                projectsDao.setProject("", user);
             }
 
-            dbConnection.commitTransaction();
+            session.getTransaction().commit();
         } catch (SQLException e) {
             e.printStackTrace(System.out);
-            dbConnection.rollBackTransaction();
+            session.getTransaction().rollback();
             result = false;
         }
         return result;

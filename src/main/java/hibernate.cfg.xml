@@ -6,30 +6,25 @@
 <hibernate-configuration>
 
     <session-factory>
-
-        <!-- Database connection settings -->
-        <property name="connection.driver_class">org.gjt.mm.mysql.Driver</property>
+        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
         <property name="connection.url">jdbc:mysql://localhost:3306/test</property>
-        <property name="connection.username">root</property>
-        <property name="connection.password">root</property>
-
-        <!-- JDBC connection pool (use the built-in) -->
+        <property name="connection.username">testUser</property>
+        <property name="connection.password">test</property>
         <property name="connection.pool_size">1</property>
-
-        <!-- SQL dialect -->
         <property name="dialect">org.hibernate.dialect.HSQLDialect</property>
-
-        <!-- Enable Hibernate's automatic session context management -->
         <property name="current_session_context_class">thread</property>
-
-        <!-- Echo all executed SQL to stdout -->
         <property name="show_sql">true</property>
-
-        <!-- Drop and re-create the database schema on startup -->
         <property name="hbm2ddl.auto">update</property>
 
-        <mapping resource="hibernate.hbm.xml"/>
-
+        <mapping class="by.mgvrk.entity.user.User"/>
+        <mapping class="by.mgvrk.entity.user.DataUser"/>
+        <mapping class="by.mgvrk.entity.user.Role"/>
+        <mapping class="by.mgvrk.entity.user.Project"/>
+        <mapping class="by.mgvrk.entity.tags.Tag"/>
+        <mapping class="by.mgvrk.entity.tags.TagAttribute"/>
+        <mapping class="by.mgvrk.entity.tags.TagAttributeValue"/>
+        <mapping class="by.mgvrk.entity.properties.CssProperty"/>
+        <mapping class="by.mgvrk.entity.properties.CssPropertyValue"/>
     </session-factory>
 
 </hibernate-configuration>

@@ -1,6 +1,6 @@
 package by.mgvrk.servlet;
 
-import by.mgvrk.entity.User;
+import by.mgvrk.entity.user.User;
 import by.mgvrk.service.UserService;
 
 import javax.servlet.ServletException;
@@ -18,7 +18,7 @@ public class LoginServlet extends HttpServlet {
         UserService serviceDao = new UserService();
 
         User user = new User();
-        user.setName(req.getParameter("login"));
+        user.setLogin(req.getParameter("login"));
         user.setPassword(req.getParameter("password"));
 
         if (serviceDao.isRegistered(user)) {

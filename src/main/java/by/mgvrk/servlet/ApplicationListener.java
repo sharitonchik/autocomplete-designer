@@ -1,7 +1,8 @@
 package by.mgvrk.servlet;
 
 import by.mgvrk.dao.BaseInitialisation;
-import by.mgvrk.dao.DBConnection;
+import by.mgvrk.util.HibernateHelper;
+import org.hibernate.Session;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
@@ -10,15 +11,15 @@ import javax.servlet.ServletContextListener;
  * User: sharitonchik
  */
 public class ApplicationListener implements ServletContextListener {
-    DBConnection dbConnection;
+    Session session;
 
     public void contextInitialized(ServletContextEvent sce) {
-        dbConnection = DBConnection.getInstance();
-        BaseInitialisation baseInitialisation = new BaseInitialisation(dbConnection);
+        session = HibernateHelper.getSessionFactory().getCurrentSession();
+        BaseInitialisation baseInitialisation  = new BaseInitialisation(session);
         baseInitialisation.createTables();
     }
 
     public void contextDestroyed(ServletContextEvent sce) {
-        dbConnection.closeConnection();
+        session.close();
     }
 }

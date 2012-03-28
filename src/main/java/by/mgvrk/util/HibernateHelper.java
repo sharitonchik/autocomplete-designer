@@ -1,22 +1,27 @@
 package by.mgvrk.util;
 
+import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
-import org.hibernate.service.ServiceRegistry;
-import org.hibernate.service.ServiceRegistryBuilder;
 
 /**
  * User: sharitonchik
  */
 public class HibernateHelper {
-    private static ServiceRegistry serviceRegistry;
+    private static final SessionFactory instance;
 
-    private static SessionFactory buildSessionFactory() {
-        return new Configuration().configure().buildSessionFactory();
+    static {
+        try {
+            instance = new Configuration()
+                    .configure().buildSessionFactory();
+        } catch (Throwable e) {
+            throw new ExceptionInInitializerError(e);
+
+        }
     }
 
-    public static SessionFactory getSessionFactory() {
-        return buildSessionFactory();
+    public static SessionFactory getSessionFactory() throws HibernateException {
+        return instance;
     }
 }
 

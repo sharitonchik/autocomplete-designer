@@ -1,6 +1,7 @@
 package by.mgvrk.servlet;
 
-import by.mgvrk.entity.User;
+import by.mgvrk.entity.user.DataUser;
+import by.mgvrk.entity.user.User;
 import by.mgvrk.service.UserService;
 
 import javax.servlet.ServletException;
@@ -23,20 +24,28 @@ public class RegisterServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         UserService serviceDao = new UserService();
 
-        User user = new User();
-        user.setName(req.getParameter("login"));
-        user.setPassword(req.getParameter("password"));
-        user.setCountry(req.getParameter("country"));
-        user.setPhone(req.getParameter("phone"));
-        user.setEmail(req.getParameter("email"));
-        user.setGender(req.getParameter("gender"));
-
-        if (serviceDao.registerUser(user)) {
+        if (serviceDao.registerUser(createUser(req))) {
             resp.sendRedirect("good.jspx");
         } else {
             resp.sendRedirect("registration_fail.jspx");
         }
 
+    }
+
+    private User createUser(HttpServletRequest req) {
+        User user = new User();
+        DataUser dataUser = new DataUser();
+
+        user.setLogin(req.getParameter("login"));
+        user.setPassword(req.getParameter("password"));
+
+        dataUser.setCountry(req.getParameter("country"));
+        dataUser.setPhone(req.getParameter("phone"));
+        dataUser.setEmail(req.getParameter("email"));
+        dataUser.setGender(req.getParameter("gender"));
+
+        user.setDataUsers(dataUser);
+        return user;
     }
 
 }

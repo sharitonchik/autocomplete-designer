@@ -1,6 +1,8 @@
 package by.mgvrk.dao;
 
-import by.mgvrk.entity.User;
+import by.mgvrk.entity.user.Role;
+import by.mgvrk.entity.user.User;
+import org.hibernate.Session;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -10,19 +12,16 @@ import java.sql.SQLException;
  */
 public class RoleDao extends Dao {
 
-    public RoleDao(DBConnection dbConnection) {
-        super(dbConnection);
+    public RoleDao(Session session) {
+        super(session);
     }
 
-    public void getRole(User user) throws SQLException {
-        String sqlQueryString = "SELECT ROLES.ROLE " +
-                "FROM USERS, ROLES " +
-                "WHERE USERS.NAME=? and USERS.PASSWORD=? and USERS.ROLE=ROLES.ROLE";
-        PreparedStatement statement = dbConnection.getPreparedStatement(sqlQueryString);
+    public String getRole(User user) throws SQLException {
+        Role role = (Role) session.load(Role.class,user.getRole());
+        return role.getRole();
+    }
 
-        statement.setString(1, user.getName());
-        statement.setString(2, user.getPassword());
-
-        statement.executeUpdate();
+    public Role getUserRole() {
+        return (Role) session.load(Role.class, 2l);
     }
 }
