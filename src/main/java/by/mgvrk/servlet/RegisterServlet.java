@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 /**
  * UserDao: sharitonchik
@@ -17,19 +18,18 @@ public class RegisterServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doGet(req, resp);
+        doPost(req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        UserService serviceDao = new UserService();
+        UserService userService = new UserService();
 
-        if (serviceDao.registerUser(createUser(req))) {
+        if (userService.registerUser(createUser(req))) {
             resp.sendRedirect("good.jspx");
         } else {
             resp.sendRedirect("registration_fail.jspx");
         }
-
     }
 
     private User createUser(HttpServletRequest req) {
@@ -47,5 +47,4 @@ public class RegisterServlet extends HttpServlet {
         user.setDataUsers(dataUser);
         return user;
     }
-
 }
