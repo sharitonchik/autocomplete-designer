@@ -1,26 +1,12 @@
 <!--
   User: sharitonchik
 -->
-<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" xmlns="http://www.w3.org/1999/xhtml" version="2.0">
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page"
+          xmlns:ad="urn:jsptagdir:/WEB-INF/tags"
+          xmlns="http://www.w3.org/1999/xhtml" version="2.0">
     <jsp:directive.page contentType="text/html; ISO-8859-1; charset=UTF-8"/>
 
-    <html>
-    <head>
-        <title>Main page</title>
-        <jsp:directive.include file="/resources/assets/fragments/stylesheet.jspf"/>
-    </head>
-    <body>
-
-    <section id="container">
-        <jsp:directive.include file="resources/assets/fragments/header.jspf"/>
-        <jsp:directive.include file="/resources/assets/fragments/menubar.jspf"/>
-
-        <section id="content">
-            <jsp:directive.include file="/resources/assets/fragments/content/index.jspf"/>
-        </section>
-
-        <jsp:directive.include file="resources/assets/fragments/footer.jspf"/>
-    </section>
-    </body>
-    </html>
+    <ad:template title="Main page">
+        <jsp:directive.include file="/resources/assets/fragments/content/index.jspf"/>
+    </ad:template>
 </jsp:root>
