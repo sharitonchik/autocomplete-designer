@@ -4,13 +4,13 @@
 <jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" xmlns="http://www.w3.org/1999/xhtml" version="2.0">
 
     <jsp:directive.attribute name="title"/>
-    <jsp:directive.attribute name="nav" fragment="true"/>
+    <jsp:directive.attribute name="script" fragment="true"/>
 
     <html>
     <head>
         <title>${title}</title>
         <jsp:directive.include file="/resources/assets/fragments/stylesheet.jspf"/>
-        <jsp:invoke fragment="nav"/>
+        <jsp:invoke fragment="script"/>
     </head>
     <body>
 
