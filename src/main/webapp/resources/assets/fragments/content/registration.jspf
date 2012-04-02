@@ -1,54 +1,65 @@
-<form method="post" action="/registration">
+<form id="registerForm" method="post" action="/registration">
     <table>
         <tr>
-            <td><label>Login name</label></td>
-            <td><input type="text" name="login"/></td>
-        </tr>
-        <tr>
             <td>
-                <label>Password </label>
+                <label for="login">Login name</label>
             </td>
             <td>
-                <input type="text" name="password"/>
+                <input id="login" type="text" name="login" required="required" placeholder="like Sergey"/>
+                <span id="loginError" class="error"></span>
             </td>
         </tr>
+
         <tr>
             <td>
-                <label>Country </label>
+                <label for="password">Password </label>
             </td>
             <td>
-                <input type="text" name="country"/>
+                <input id="password" type="password" name="password" required="required"
+                       placeholder="like 25ser07g1990"/>
+                <span id="passwordError" class="error"></span>
             </td>
         </tr>
+
         <tr>
             <td>
-                <label>Gender </label>
+                <label for="country">Country</label>
+            </td>
+            <td>
+                <input id="country" type="text" name="country" required="required"/>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <label for="gender">Gender </label>
             </td>
             <td>
                 Male:<input type="radio" name="gender" value="Male"/><br/>
                 Female:<input type="radio" name="gender" value="Female"/>
             </td>
         </tr>
+
         <tr>
             <td>
-                <label>Phone </label>
+                <label for="phone">Phone </label>
             </td>
             <td>
-                <input type="text" name="phone"/>
+                <input id="phone" type="text" name="phone" required="required" placeholder="+375(29)-388-39-22"/>
             </td>
         </tr>
+
         <tr>
             <td>
-                <label>E-mail</label>
+                <label for="email">E-mail</label>
             </td>
             <td>
-                <input type="text" name="email"/>
+                <input id="email" type="email" name="email" required="required" placeholder="berreig@gmail.com"/>
             </td>
         </tr>
+
         <tr>
-            <td>
-                &nbsp;
-            </td>
+            <td>&nbsp;</td>
             <td>
                 <input type="submit" name="btn" value="Registration"/>
             </td>
