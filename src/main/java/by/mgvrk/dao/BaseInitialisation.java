@@ -1,10 +1,12 @@
 package by.mgvrk.dao;
 
+import by.mgvrk.entity.user.Role;
 import by.mgvrk.entity.user.User;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 
 import java.sql.SQLException;
+import java.util.List;
 
 /**
  * User: sharitonchik
@@ -15,35 +17,29 @@ public class BaseInitialisation extends Dao {
         super(session);
     }
 
-    public void createTables() {
+    public void rowInit() {
+        boolean adminExist = false;
+        boolean userExist = false;
+
         session.getTransaction().begin();
         try {
-            createTable("CREATE TABLE USERS (" +
-                    "ID INT NOT NULL AUTO_INCREMENT, " +
-                    "login varchar(20), " +
-                    "password varchar(20), " +
-                    "role int," +
-                    "PRIMARY KEY (ID));");
+            List roles = session.createQuery("from Role").list();
+            for (int i = 0; i < roles.size(); i++) {
+                Role role = (Role) roles.get(i);
+                if (role.getRole().equals("admin")) {
+                    adminExist = true;
+                }
+                if (role.getRole().equals("user")) {
+                    userExist = true;
+                }
+            }
 
-            createTable("CREATE TABLE DATA_USER (" +
-                    "ID INT NOT NULL AUTO_INCREMENT, " +
-                    "country varchar(20), " +
-                    "phone varchar(20)," +
-                    "email varchar(20), " +
-                    "gender varchar(20)," +
-                    "PRIMARY KEY (ID));");
-
-            createTable("CREATE TABLE ROLES (" +
-                    "ID INT NOT NULL AUTO_INCREMENT, " +
-                    "role varchar(20)," +
-                    "PRIMARY KEY (ID));");
-            session.createSQLQuery("INSERT INTO ROLES (role) VALUES ('admin');").executeUpdate();
-            session.createSQLQuery("INSERT INTO ROLES (role) VALUES ('user');").executeUpdate();
-            createTable("CREATE TABLE PROJECTS (" +
-                    "ID INT NOT NULL AUTO_INCREMENT, " +
-                    "ID_users int," +
-                    "name_project varchar(20)," +
-                    "PRIMARY KEY (ID));");
+            if (!adminExist) {
+                createRole("admin");
+            }
+            if (!userExist) {
+                createRole("user");
+            }
             session.getTransaction().commit();
         } catch (HibernateException e) {
             e.printStackTrace(System.out);
@@ -51,8 +47,9 @@ public class BaseInitialisation extends Dao {
         }
     }
 
-    private void createTable(String sqlQuery) {
-        session.createSQLQuery(sqlQuery);
+    private void createRole(String roleName) {
+        Role role = new Role();
+        role.setRole(roleName);
+        session.save(role);
     }
-
 }

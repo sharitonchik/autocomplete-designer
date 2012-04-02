@@ -14,12 +14,16 @@ public class ApplicationListener implements ServletContextListener {
     Session session;
 
     public void contextInitialized(ServletContextEvent sce) {
-        session = HibernateHelper.getSessionFactory().getCurrentSession();
-        BaseInitialisation baseInitialisation  = new BaseInitialisation(session);
-        baseInitialisation.createTables();
+        if (sce.getServletContext().getInitParameter("environment").equals("dev")) {
+            session = HibernateHelper.getSessionFactory().getCurrentSession();
+            BaseInitialisation baseInitialisation = new BaseInitialisation(session);
+            baseInitialisation.rowInit();
+            session.close();
+        }
     }
 
     public void contextDestroyed(ServletContextEvent sce) {
-        session.close();
+//        session.disconnect();
+//        session.close();
     }
 }
