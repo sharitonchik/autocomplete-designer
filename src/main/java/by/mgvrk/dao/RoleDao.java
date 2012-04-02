@@ -2,6 +2,7 @@ package by.mgvrk.dao;
 
 import by.mgvrk.entity.user.Role;
 import by.mgvrk.entity.user.User;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 
 import java.sql.PreparedStatement;
@@ -16,7 +17,7 @@ public class RoleDao extends Dao {
         super(session);
     }
 
-    public String getRole(User user) throws SQLException {
+    public String getRole(User user) throws HibernateException {
         Role role = (Role) session.load(Role.class,user.getRole());
         return role.getRole();
     }

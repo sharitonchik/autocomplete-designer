@@ -2,6 +2,7 @@ package by.mgvrk.dao;
 
 import by.mgvrk.entity.user.Role;
 import by.mgvrk.entity.user.User;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 
 import java.sql.PreparedStatement;
@@ -18,22 +19,44 @@ public class UserDao extends Dao {
         super(session);
     }
 
-    public void setUser(User user) throws SQLException {
+    public void setUser(User user) throws HibernateException {
         session.save(user);
     }
 
 
-    public boolean checkUser(String login, String password) throws SQLException {
-        boolean result = false;
-        List users = session.createQuery("from User").list();
+    public boolean checkUser(String login, String password) {
+        List users = getUserList();
+
         for (int i = 0; i < users.size(); i++) {
             User user = (User) users.get(i);
-            if (user.getLogin().equals(login) && user.getPassword().equals(password)) {
-                result = true;
+            if (password == null) {
+                if (user.getLogin().equals(login)) {
+                    return true;
+                }
+            } else if (login == null) {
+                if (user.getPassword().equals(password)) {
+                    return true;
+                }
             } else {
-                result = false;
+                if (user.getLogin().equals(login) && user.getPassword().equals(password)) {
+                    return true;
+                }
             }
         }
-        return result;
+        return false;
+    }
+
+    private List getUserList() {
+        List users = null;
+        session.beginTransaction();
+
+        try {
+            users = session.createQuery("from User").list();
+            session.getTransaction().commit();
+        } catch (HibernateException e) {
+            e.printStackTrace(System.out);
+            session.getTransaction().rollback();
+        }
+        return users;
     }
 }

@@ -3,6 +3,7 @@ package by.mgvrk.service;
 import by.mgvrk.dao.*;
 import by.mgvrk.entity.user.User;
 import by.mgvrk.util.HibernateHelper;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 
 import java.sql.SQLException;
@@ -39,25 +40,23 @@ public class UserService {
     }
 
     public boolean getAccessLevel(User user) {
-
         return doCommand("access", user);
+    }
+
+    public boolean checkLogin(User user) {
+        return userDao.checkUser(user.getLogin(), user.getPassword());
     }
 
     private boolean doCommand(String command, User user) {
         boolean result = false;
 
-        session.beginTransaction();
+        session.getTransaction().begin();
         try {
             if (command.equals("register")) {
                 user.setRole(roleDao.getUserRole().getID());
                 userDao.setUser(user);
                 result = true;
             }
-
-            if (command.equals("check")) {
-                result = userDao.checkUser(user.getLogin(), user.getPassword());
-            }
-
             if (command.equals("access")) {
                 roleDao.getRole(user);
                 result = true;
@@ -66,9 +65,8 @@ public class UserService {
             if (command.equals("addProject")) {
                 projectsDao.setProject("", user);
             }
-
             session.getTransaction().commit();
-        } catch (SQLException e) {
+        } catch (HibernateException e) {
             e.printStackTrace(System.out);
             session.getTransaction().rollback();
             result = false;
