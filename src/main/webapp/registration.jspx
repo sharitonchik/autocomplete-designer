@@ -6,9 +6,13 @@
           xmlns="http://www.w3.org/1999/xhtml" version="2.0">
     <jsp:directive.page contentType="text/html; ISO-8859-1; charset=UTF-8"/>
 
-    <jsp:directive.include file="/resources/assets/fragments/js.jspf"/>
-
     <ad:template title="Registration">
+        <jsp:attribute name="script">
+            <script type="text/javascript" src="/resources/assets/javascripts/jquery-1.7.min.js">//</script>
+            <script type="text/javascript" src="/resources/assets/javascripts/jquery.endOfInput.js">//</script>
+            <script type="text/javascript" src="/resources/assets/javascripts/timer.js">//</script>
+            <script type="text/javascript" src="/resources/assets/javascripts/ajaxTest.js">//</script>
+        </jsp:attribute>
         <jsp:directive.include file="/resources/assets/fragments/content/registration.jspf"/>
     </ad:template>
 </jsp:root>

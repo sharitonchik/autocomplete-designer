@@ -3,14 +3,14 @@
  */
 jQuery.fn.bindEndOfInput = function (delay, fn) {
     delay = delay / 2;
-    $(this).keyup(function (event) {
+    $(this).live('keyup', (function (event) {
         if (isNotSymbol(event.which)) {
             return;
         }
         if (typeof fn === 'function') {
             startTimer($(this), delay, fn);
         }
-    });
+    }));
 
     var isNotSymbol = function (check) {
         return !(check == 8 ||
