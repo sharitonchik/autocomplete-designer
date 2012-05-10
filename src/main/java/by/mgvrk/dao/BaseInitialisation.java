@@ -1,11 +1,9 @@
 package by.mgvrk.dao;
 
 import by.mgvrk.entity.user.Role;
-import by.mgvrk.entity.user.User;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 
-import java.sql.SQLException;
 import java.util.List;
 
 /**
