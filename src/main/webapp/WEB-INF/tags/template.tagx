@@ -5,11 +5,13 @@
 
     <jsp:directive.attribute name="title"/>
     <jsp:directive.attribute name="script" fragment="true"/>
+    <jsp:directive.attribute name="css" fragment="true"/>
 
     <html>
     <head>
         <title>${title}</title>
         <jsp:directive.include file="/resources/assets/fragments/stylesheet.jspf"/>
+        <jsp:invoke fragment="css"/>
         <jsp:invoke fragment="script"/>
     </head>
     <body>
