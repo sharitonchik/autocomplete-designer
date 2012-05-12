@@ -7,6 +7,21 @@
     <jsp:directive.page contentType="text/html; ISO-8859-1; charset=UTF-8"/>
 
     <ad:template title="Project">
+        <jsp:attribute name="css">
+            <link rel="stylesheet" type="text/css" href="/resources/assets/stylesheets/codemirror.css"/>
+            <link rel="stylesheet" type="text/css" href="/resources/assets/stylesheets/tabsDesign"/>
+        </jsp:attribute>
+        <jsp:attribute name="script">
+            <script type="text/javascript" src="/resources/assets/javascripts/jquery-1.7.min.js">//</script>
+            <script type="text/javascript" src="/resources/assets/javascripts/codemirror/codemirror.js">//</script>
+            <script type="text/javascript" src="/resources/assets/javascripts/codemirror/xml.js">//</script>
+            <script type="text/javascript" src="/resources/assets/javascripts/codemirror/css.js">//</script>
+            <script type="text/javascript" src="/resources/assets/javascripts/codemirror/jQuery.editors.js">//</script>
+            <script type="text/javascript" src="/resources/assets/javascripts/jQuery.tabs.js">//</script>
+            <script type="text/javascript" src="/resources/assets/javascripts/autocomplete.js">//</script>
+        </jsp:attribute>
+
+
         <jsp:directive.include file="/resources/assets/fragments/content/work_space.jspf"/>
     </ad:template>
 </jsp:root>
