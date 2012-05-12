@@ -1,7 +1,43 @@
-<section id="work_space">
-    <section id="output" class="right"></section>
-    <textarea id="source_code"></textarea><br/>
-    <input id="beauty" type="button" value="Beautify code"/>
-    <input id="see" type="button" value="See"/>
-    <%--<textarea id="css_code"></textarea>--%>
+<section id="workSpace">
+    <div id="projectName"></div>
+    <iframe id="output" class="right"></iframe>
+    <section id="tabs">
+        <ul class="navigation">
+            <li>
+                <a class="" data-href="#codeTab">Code</a>
+            </li>
+            <li>
+                <a class="" data-href="#cssTab">Css</a>
+            </li>
+        </ul>
+        <div id="codeTab">
+            <textarea name="code" id="code">
+&lt;!DOCTYPE HTML&gt;
+&lt;html&gt;
+&lt;head&gt;
+
+    &lt;style&gt;
+       &lt;link rel="stylesheets" type="text/css" href="css.css"/&gt;
+    &lt;/style&gt;
+
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</textarea>
+        </div>
+        <div id="cssTab">
+            <textarea name="css" id="css">
+body {
+    margin: 0;
+    padding: 3em 6em;
+    font-family: tahoma, arial, sans-serif;
+    color: #000;
+}
+            </textarea>
+        </div>
+    </section>
+    <section id="buttons">
+        <input id="see" type="button" value="See"/>
+    </section>
 </section>
