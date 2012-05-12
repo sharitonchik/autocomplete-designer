@@ -1,18 +1,31 @@
 $(document).ready(function() {
-    var code = $('#source_code');
-    var code_text;
+    var projectName = prompt("Set project name");
+    $('#projectName').html('<h2>' + projectName + '</h2>');
+    var element = {};
+    element.pname = projectName;
+    element.command = "create";
+    $.ajax({
+                url:"/project",
+                contentType:"text/html",
+                data:element
+            }).error(function() {
+                console.log("error");
+            });
+
+    var code = $('.CodeMirror-lines');
+    var codeText;
     var result = $('#output');
 
-    $('#beauty').click(function() {
-        getCodeAndBeautify();
-    });
     $('#see').click(function() {
-        getCodeAndBeautify();
-        result.html(code_text);
+        element.html = codeText = code.first().text();
+        element.css = codeText = code.last().text();
+        element.command = "write";
+        $.ajax({
+                    url:"/project",
+                    contentType:"text/html",
+                    data:element
+                });
+        codeText = code.first().text();
+        result.html(codeText);
     });
-
-    function getCodeAndBeautify() {
-        code_text = code.val();
-        code.val(vkbeautify(code_text, 'xml'));
-    }
 });
