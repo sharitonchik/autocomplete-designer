@@ -16,7 +16,7 @@
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-entitymanager</artifactId>
-            <version>4.1.0.Final</version>
+            <version>4.1.2.Final</version>
         </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
