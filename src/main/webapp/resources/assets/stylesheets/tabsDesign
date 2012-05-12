@@ -1,0 +1,31 @@
+#tabs {
+    padding: 1em;
+    margin-left: -25px;
+}
+
+ul.navigation {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+ul.navigation li {
+    display: inline;
+}
+
+ul.navigation a {
+    cursor: pointer;
+    text-decoration: none;
+}
+
+ul.navigation li a.selected,
+ul.navigation li a.selected:hover {
+    cursor: pointer;
+    background: none repeat scroll 0 0 #FFF111;
+    color: #000;
+}
+
+ul.navigation li a:hover {
+    background: #ccc;
+    color: #000;
+}

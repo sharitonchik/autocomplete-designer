@@ -9,7 +9,7 @@ body {
 #container {
     margin: 0 auto;
     width: 750px;
-    height: auto;
+    height: 750px;
 }
 
 #art {
@@ -73,13 +73,22 @@ body {
     min-height: 500px;
 }
 
-#work_space {
-    margin:10px;
+#workSpace {
+    margin: 10px;
 }
 
-#source_code {
+#code {
     width: 340px;
     height: 300px;
+}
+
+#css {
+    width: 340px;
+    height: 300px;
+}
+
+.CodeMirror {
+    border: 1px solid black;
 }
 
 #output {
@@ -105,14 +114,25 @@ body {
     height: 40px;
     width: 750px;
 }
-.clear{
-    clear:both;
+
+.clear {
+    clear: both;
 }
 
-#content .error{
+#content .error {
     color: red;
     font-size: 2em;
 }
+
+#buttons {
+
+}
+
+h2 {
+    text-shadow: black 1px 1px 1px, green 0 0 1em;
+    color: red;
+}
+
 
 
 
