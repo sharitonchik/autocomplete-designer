@@ -12,6 +12,7 @@ import java.sql.SQLException;
  * User: sharitonchik
  */
 public class UserService {
+    //hello world
     private Session session;
     private UserDao userDao;
     private DataUserDao dataUserDao;
