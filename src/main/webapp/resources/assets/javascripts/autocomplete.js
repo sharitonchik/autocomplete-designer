@@ -1,9 +1,8 @@
 $(document).ready(function() {
-    var projectName = prompt("Set project name");
-    $('#projectName').html('<h2>' + projectName + '</h2>');
     var element = {};
     element.pname = projectName;
     element.command = "create";
+
     $.ajax({
                 url:"/project",
                 contentType:"text/html",
