@@ -8,6 +8,8 @@
 
     <ad:template title="Main page">
         <jsp:attribute name="script">
+            <script type="text/javascript" src="/resources/assets/javascripts/jquery-1.7.min.js">//</script>
+            <script type="text/javascript" src="/resources/assets/javascripts/pages/main.js">//</script>
         </jsp:attribute>
         <jsp:directive.include file="/resources/assets/fragments/content/index.jspf"/>
     </ad:template>

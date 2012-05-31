@@ -1,22 +1,65 @@
-<article>
-    Most programming languages contain good and bad parts, but JavaScript has more than its share of the
-    bad,
-    having been developed and released in a hurry before it could be refined. This authoritative book
-    scrapes
-    away these bad features to reveal a subset of JavaScript that's more reliable, readable, and
-    maintainable
-    than the language as a whole-a subset you can use to create truly extensible and efficient code.
-    Considered
-    the JavaScript expert by many people in the development community, author Douglas Crockford identifies
-    the
-    abundance of good ideas that make JavaScript an outstanding object-oriented programming language-ideas
-    such
-    as functions, loose typing, dynamic objects, and an expressive object literal notation. Unfortunately,
-    these
-    good ideas are mixed in with bad and downright awful ideas, like a programming model based on global
-    variables. When Java applets failed, JavaScript became the language of the Web by default, making its
-    popularity almost completely independent of its qualities as a programming language. In JavaScript: The
-    Good
-    Parts, Crockford finally digs through the steaming pile of good intentions and blunders to give you a
-    detailed look at all the genuinely elegant parts of JavaScript, including:
+<div class="chapter">
+    <div class="prev cursor"><span class="chapter"><< Previous</span></div>
+    <div class="next cursor"><span class="chapter">Next Chapter >></span></div>
+</div>
+<article id="inside">
+    <h1>HTML Introduction</h1>
+
+    <h3>What is HTML?</h3>
+
+    <p>HTML is a language for describing web pages.</p>
+    <ul>
+        <li>HTML stands for <b>H</b>yper <b>T</b>ext <b>M</b>arkup <b>L</b>anguage</li>
+        <li>HTML is not a programming language, it is a <b>markup language</b></li>
+        <li>A markup language is a set of <b>markup tags</b></li>
+        <li>The purpose of the tags are to <strong>describe page content</strong></li>
+    </ul>
+    <hr>
+
+    <h3>HTML Tags</h3>
+
+    <p>HTML markup tags are usually called HTML tags</p>
+    <ul>
+
+        <li>HTML tags are keywords (tag names) surrounded by <b>angle brackets </b>like &lt;html&gt;</li>
+        <li>HTML tags normally <b> come in pairs</b> like &lt;b&gt; and &lt;/b&gt;</li>
+        <li>The first tag in a pair is the <b> start tag,</b> the
+            second tag is the <b> end tag</b></li>
+        <li>The end tag is written like the start tag, with a <strong>forward slash</strong>
+            before the tag name
+        </li>
+        <li>Start and end tags are also called <b>opening tags</b> and <b>closing
+            tags</b></li>
+    </ul>
+
+    <div style="width:610px;border:1px solid lightgray;font-size:20px;padding:10px">
+        <span style="color:#98bf21">&lt;tagname&gt;</span>content<span style="color:#98bf21">&lt;/tagname&gt;</span>
+    </div>
+
+    <h3>HTML Page Structure</h3>
+
+    <p>Below is a visualization of an HTML page structure:</p>
+
+    <div class="example">
+        &lt;html&gt;
+        <div style="width:550px;border:1px solid grey;padding:3px;margin:20px">
+            &lt;body&gt;
+            <div style="width:470px;border:1px solid grey;padding:5px;margin:20px">
+                &lt;h1&gt;This a Heading&lt;/h1&gt;
+            </div>
+            <div style="width:470px;border:1px solid grey;padding:5px;margin:20px">
+                &lt;p&gt;This is a paragraph.&lt;/p&gt;
+            </div>
+            <div style="width:470px;border:1px solid grey;padding:5px;margin:20px">
+                &lt;p&gt;This is another paragraph.&lt;/p&gt;
+            </div>
+            &lt;/body&gt;
+        </div>
+        &lt;/html&gt;
+    </div>
+
 </article>
+<div class="chapter">
+    <div class="prev cursor"><span class="chapter"><< Previous</span></div>
+    <div class="next cursor"><span class="chapter">Next Chapter >></span></div>
+</div>
