@@ -25,7 +25,6 @@ public class ProjectSaver {
         try {
             boolean htmlSuccess = htmlFile.createNewFile();
             boolean cssSuccess = cssFile.createNewFile();
-            System.out.println(htmlSuccess + " " + cssSuccess);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -48,7 +47,9 @@ public class ProjectSaver {
                 e.printStackTrace(System.out);
             } finally {
                 try {
-                    output.close();
+                    if (output != null) {
+                        output.close();
+                    }
                 } catch (IOException e) {
                     //quietly
                 }
