@@ -6,7 +6,14 @@
           xmlns="http://www.w3.org/1999/xhtml" version="2.0">
     <jsp:directive.page contentType="text/html; ISO-8859-1; charset=UTF-8"/>
 
-    <ad:template title="Profile">
+    <ad:template title="Profile"> <jsp:attribute name="css">
+            <link rel="stylesheet" type="text/css" href="/resources/assets/stylesheets/codemirror.css"/>
+            <link rel="stylesheet" type="text/css" href="/resources/assets/stylesheets/tabsDesign"/>
+        </jsp:attribute>
+        <jsp:attribute name="script">
+            <script type="text/javascript" src="/resources/assets/javascripts/jquery-1.7.min.js">//</script>
+            <script type="text/javascript" src="/resources/assets/javascripts/pages/profile.js">//</script>
+        </jsp:attribute>
         <jsp:directive.include file="/resources/assets/fragments/content/profile.jspf"/>
     </ad:template>
 </jsp:root>
