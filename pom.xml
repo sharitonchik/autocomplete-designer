@@ -1,11 +1,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>autocompletion-designer</groupId>
-    <artifactId>autocompletion-designer</artifactId>
+    <groupId>autocomplete-designer</groupId>
+    <artifactId>autocomplete-designer</artifactId>
     <packaging>war</packaging>
     <version>0.1</version>
-    <name>autocompletion-designer Maven Webapp</name>
+    <name>autocomplete-designer Maven Webapp</name>
     <url>http://maven.apache.org</url>
     <dependencies>
         <dependency>
@@ -37,6 +37,6 @@
         </dependency>
     </dependencies>
     <build>
-        <finalName>autocompletion-designer</finalName>
+        <finalName>autocomplete-designer</finalName>
     </build>
 </project>
